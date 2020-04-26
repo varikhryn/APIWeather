@@ -12,29 +12,29 @@
 
 <body>
 
-    <header>
+    <header id='header'>
         <button id="open-city-menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <div class="open-city-menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <p>Выберете город</p>
         </button>
-        <div class="items-big-city">
+        <div id="items-big-city">
+            <button id="show-City">Узнать погоду</button>
+        </div>
+        <div id="weather-in-header" class="weather-in-header">
 
         </div>
     </header>
 
     </div>
     <div class="section-weather">
-        <div class="section-weather__get">
+        <div class="section-weather__get"></div>
 
-        </div>
-
-        <div class="section-weather__item item-city">
-            <p>Выберете город</p>
-            <select name="city" id="name-city">
-
-            </select>
-        </div>
+        <div id='item-city' class="section-weather__item item-city"></div>
         <button class="btn btn-1">Go</button>
     </div>
 

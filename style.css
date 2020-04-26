@@ -34,9 +34,22 @@ header{
     top: 0;
     padding: 10px 20px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #open-city-menu{
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.open-city-menu-icon{
     width: 50px;
     height: 30px;
     position: relative;
@@ -44,30 +57,35 @@ header{
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    cursor: pointer;
-    overflow: hidden;
+    margin-right: 30px;
 }
 
-#open-city-menu.open-city-menu__active span:nth-of-type(1){
+#open-city-menu p{
+    font-size: 18px;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+}
+
+#open-city-menu.open-city-menu__active .open-city-menu-icon span:nth-of-type(1){
     transform: rotate(45deg);
     transform-origin: 0;
     transition: all .5s ease-in;
 }
 
-#open-city-menu.open-city-menu__active span:nth-of-type(2){
+#open-city-menu.open-city-menu__active .open-city-menu-icon span:nth-of-type(2){
     transform: translateX(-30px);
     transform-origin: right;
     opacity: 0;
     transition: all .2s ease-in;
 }
 
-#open-city-menu.open-city-menu__active span:nth-of-type(3){
+#open-city-menu.open-city-menu__active .open-city-menu-icon span:nth-of-type(3){
     transform: rotate(-45deg);
     transform-origin: 0;
     transition: all .5s ease-in;
 }
 
-#open-city-menu span{
+#open-city-menu .open-city-menu-icon span{
     height: 1px;
     background-color: rgb(255, 255, 255);
     transition: all .5s ease-in;
@@ -82,13 +100,42 @@ header{
     width: 50%;
 }
 
+#show-City{
+    width: 100%;
+    padding: 24px;
+    font-size: 24px;
+    text-transform: uppercase;
+    background-color: lightgreen;
+    color: rgb(73, 74, 82);
+    border: 1px solid rgb(73, 74, 82);
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+.weather-in-header{
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .section-weather{
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     width: 600px;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 20px;
     border: 1px solid rgb(183, 155, 93);
     padding: 50px 20px;
     transition: all .5s ease;
+}
+
+.section-weather__get,
+.section-weather__item {
+    width: 100%;
 }
 
 .section-weather__item p{
@@ -106,7 +153,7 @@ header{
     transition: all .5s ease;
 }
 
-.items-big-city p{
+#items-big-city p{
     color: rgb(73, 74, 82);
 }
 
@@ -168,13 +215,68 @@ p.weather-temperature{
     font-size: 18px;
 }
 
-.items-big-city{
+#items-big-city{
     background-color: rgb(250, 248, 244);
+    border-right: 1px solid rgb(73, 74, 82);
+    border-bottom: 1px solid rgb(73, 74, 82);
     width: 30%;
     position: fixed;
-    min-height: calc(100vh - 50px);
+    /* min-height: calc(100vh - 50px); */
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    opacity: 0;
     left: 0;
-    top: 70px;
+    top: 50px;
+    transition: all .5s ease-in;
+    padding: 50px 20px;
+}
+
+#items-big-city.items-big-city__content{
+    min-height: calc(100vh - 50px);
+    height: calc(100% - 50px);
+    overflow-y: auto;
+    opacity: 1;
+    display: flex;
+    transition: all .5s ease-in;
+}
+
+.items-big-city__item{
+    padding-bottom: 20px;
+}
+
+.items-big-city__item label{
+    font-size: 18px;
+    text-transform: uppercase;
+    color: rgb(73, 74, 82);
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.items-big-city__item input{
+    display: none;
+}
+
+.items-big-city__item label::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: calc(50% - 7px);
+    height: 12px;
+    width: 12px;
+    border: 1px solid rgb(73, 74, 82);
+}
+
+.items-big-city__item input:checked + label::after{
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: calc(50% - 4px);
+    width: 8px;
+    height: 8px;
+    background-color: rgb(183, 155, 93);
 }
 
 #name-city{
