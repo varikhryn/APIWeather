@@ -17,9 +17,9 @@ body {
     width: 100%;
     min-height: 100vh;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     font-family: 'Source Sans Pro', sans-serif;
     color: white;
     position: relative;
@@ -38,6 +38,7 @@ header{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    z-index: 99;
 }
 
 #open-city-menu{
@@ -120,17 +121,102 @@ header{
     justify-content: space-between;
 }
 
+p.weather-city-in-header{
+    font-size: 16px;
+    text-transform: uppercase;
+    color: rgb(183, 155, 93);
+}
+
+p.weather-country-in-header{
+    font-size: 16px;
+    text-transform: lowercase;
+    color: yellow;
+}
+
 .section-weather{
     display: none;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    width: 600px;
+    width: 70%;
     background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 20px;
     border: 1px solid rgb(183, 155, 93);
     padding: 50px 20px;
+    margin: 50px auto 0 auto;
     transition: all .5s ease;
+    z-index: 9;
+}
+
+#section-weather-five-day-items{
+    width: 70%;
+    margin-top: 0;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgb(183, 155, 93);
+    padding: 50px 20px;
+    margin: 0 auto 0 auto;
+    transition: all .5s ease;
+}
+
+.section-weather-five-day-items__item{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+    border-bottom: 1px solid rgb(183, 155, 93);
+    box-sizing: border-box;
+}
+
+.section-weather-five-day-items__item:first-of-type{
+    border-top: 1px solid rgb(183, 155, 93);
+}
+
+.section-weather-five-day-items__item div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid rgb(183, 155, 93);
+    padding: 12px 8px;
+}
+
+.section-weather-five-day-items__item div:first-of-type{
+    border-left: 1px solid rgb(183, 155, 93);
+}
+
+.section-weather-five-day-items__number,
+.section-weather-five-day-items__country{
+    width: 5%;
+}
+.section-weather-five-day-items__temperature,
+.section-weather-five-day-items__wind{
+    width: 10%;
+}
+
+
+.section-weather-five-day-items__city,
+.section-weather-five-day-items__img{
+    width: 20%;
+}
+
+.section-weather-five-day-items__item div.section-weather-five-day-items__img{
+    padding: 0;
+}
+
+.section-weather-five-day-items__img img{
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.section-weather-five-day-items__data-time,
+.section-weather-five-day-items__cloud{
+    width: 15%;
 }
 
 .section-weather__get,
@@ -153,11 +239,22 @@ header{
     transition: all .5s ease;
 }
 
+.section-weather__item:last-of-type{
+    border-bottom: none;
+}
+
+#section-weather-five-day-items h2{
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 #items-big-city p{
     color: rgb(73, 74, 82);
 }
 
-.section-weather__item:last-of-type{
+.section-weather > .section-weather__item{
     border-bottom: none;
 }
 
@@ -171,12 +268,11 @@ header{
     text-transform: uppercase;
     cursor: pointer;
     border: 1px solid rgb(73, 74, 82);
-    transform: scale(1);
     transition: all .2s ease;
 }
 
 .btn:hover{
-    transform: scale(0.99);
+    opacity: 0.7;
     transition: all .2s ease;
 }
 
@@ -204,7 +300,6 @@ p.weather-temperature{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 20px;
 }
 
 .temp-min-max p{
@@ -219,7 +314,7 @@ p.weather-temperature{
     background-color: rgb(250, 248, 244);
     border-right: 1px solid rgb(73, 74, 82);
     border-bottom: 1px solid rgb(73, 74, 82);
-    width: 30%;
+    width: 22%;
     position: fixed;
     /* min-height: calc(100vh - 50px); */
     display: none;
